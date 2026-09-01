@@ -1,0 +1,2123 @@
+* {
+    box-sizing: border-box
+}
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Tahoma,"Segoe UI",sans-serif;
+    background: #f5f7fb;
+    color: #20252d
+}
+
+body {
+    overflow: hidden
+}
+
+.app {
+    width: 100%;
+    height: 100%;
+    background: #f5f7fb
+}
+
+.header {
+    height: 74px;
+    background: #fff;
+    border-bottom: 1px solid #e3e7ee;
+    display: flex;
+    align-items: center;
+    padding: 0 18px;
+    gap: 20px
+}
+
+.nav {
+    display: flex;
+    gap: 2px;
+    height: 100%;
+    align-items: center
+}
+
+.nav-btn {
+    height: 100%;
+    border: 0;
+    background: transparent;
+    padding: 0 17px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #596273;
+    border-bottom: 3px solid transparent
+}
+
+    .nav-btn.active {
+        color: #1f3c88;
+        font-weight: 700;
+        border-bottom-color: #1f3c88
+    }
+
+.top-slicers {
+    margin-right: auto;
+    display: flex;
+    gap: 24px;
+    align-items: center
+}
+
+.slicer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px
+}
+
+    .slicer select {
+        height: 34px;
+        min-width: 155px;
+        border: 1px solid #d7dce5;
+        border-radius: 7px;
+        background: #fff;
+        padding: 0 10px;
+        color: #303744
+    }
+
+.year-range-slicer {
+    min-width: 430px
+}
+
+.range-container {
+    width: 330px
+}
+
+.range-values {
+    display: flex;
+    justify-content: space-between;
+    direction: ltr;
+    font-size: 12px;
+    margin-bottom: 3px
+}
+
+.range-slider {
+    position: relative;
+    height: 28px;
+    direction: ltr
+}
+
+.range-track, .range-selected {
+    position: absolute;
+    top: 12px;
+    height: 5px;
+    border-radius: 5px
+}
+
+.range-track {
+    left: 0;
+    right: 0;
+    background: #e3e7ee
+}
+
+.range-selected {
+    background: #1f3c88
+}
+
+.range-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 28px;
+    margin: 0;
+    pointer-events: none;
+    appearance: none;
+    background: transparent
+}
+
+    .range-input::-webkit-slider-thumb {
+        appearance: none;
+        width: 18px;
+        height: 18px;
+        margin-top: 3px;
+        border-radius: 50%;
+        background: #fff;
+        border: 2px solid #9ba8bd;
+        box-shadow: 0 1px 3px rgba(0,0,0,.12);
+        cursor: pointer;
+        pointer-events: auto
+    }
+
+    .range-input::-moz-range-thumb {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #fff;
+        border: 2px solid #9ba8bd;
+        cursor: pointer;
+        pointer-events: auto
+    }
+
+.canvas {
+    position: relative;
+    width: 1280px;
+    height: calc(100vh - 74px);
+    min-height: 646px;
+    margin: 0 auto;
+    background: #fff;
+    overflow: hidden
+}
+
+.page {
+    display: none;
+    position: absolute;
+    inset: 0
+}
+
+    .page.active {
+        display: block
+    }
+
+.visual {
+    position: absolute
+}
+
+.card-v, .kpi-v, .panel {
+    background: #fff;
+    border: 1px solid #e2e6ec;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(31,60,136,.05)
+}
+
+.card-v {
+    text-align: center;
+    padding: 10px 12px
+}
+
+.visual-title {
+    font-size: 12px;
+    color: #525b69;
+    margin-bottom: 9px;
+    white-space: nowrap
+}
+
+.big-value {
+    font-size: 25px;
+    font-weight: 700;
+    color: #173b8f;
+    line-height: 1.2
+}
+
+.kpi-v {
+    text-align: center;
+    padding: 8px
+}
+
+.kpi-label {
+    font-size: 10px;
+    color: #737d8d;
+    margin-bottom: 5px
+}
+
+.kpi-value {
+    font-size: 17px;
+    font-weight: 700;
+    color: #168c4b;
+    direction: ltr
+}
+
+    .kpi-value.down {
+        color: #d34e4e
+    }
+
+    .kpi-value.neutral {
+        color: #737d8d
+    }
+
+.panel {
+    padding: 11px
+}
+
+.panel-title {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: #303744;
+    margin-bottom: 6px
+}
+
+.v-pop-card {
+    left: 15px;
+    top: 10px;
+    width: 160px;
+    height: 85px
+}
+
+.v-pop-kpi {
+    left: 15px;
+    top: 105px;
+    width: 160px;
+    height: 53px
+}
+
+.v-birth {
+    left: 185px;
+    top: 10px;
+    width: 145px;
+    height: 85px
+}
+
+.v-birth-kpi {
+    left: 185px;
+    top: 105px;
+    width: 145px;
+    height: 53px
+}
+
+.v-death {
+    left: 340px;
+    top: 10px;
+    width: 145px;
+    height: 85px
+}
+
+.v-death-kpi {
+    left: 340px;
+    top: 105px;
+    width: 145px;
+    height: 53px
+}
+
+.v-marriage {
+    left: 495px;
+    top: 10px;
+    width: 145px;
+    height: 85px
+}
+
+.v-mar-kpi {
+    left: 495px;
+    top: 105px;
+    width: 145px;
+    height: 53px
+}
+
+.v-divorce {
+    left: 650px;
+    top: 10px;
+    width: 145px;
+    height: 85px
+}
+
+.v-divorce-kpi {
+    left: 650px;
+    top: 105px;
+    width: 145px;
+    height: 53px
+}
+
+.v-emp {
+    left: 805px;
+    top: 10px;
+    width: 145px;
+    height: 85px
+}
+
+.v-emp-kpi {
+    left: 805px;
+    top: 105px;
+    width: 145px;
+    height: 53px
+}
+
+.v-unemp {
+    left: 960px;
+    top: 10px;
+    width: 145px;
+    height: 85px
+}
+
+.v-unemp-kpi {
+    left: 960px;
+    top: 105px;
+    width: 145px;
+    height: 53px
+}
+
+.v-gradu {
+    left: 1115px;
+    top: 10px;
+    width: 145px;
+    height: 85px
+}
+
+.v-gradu-kpi {
+    left: 1115px;
+    top: 105px;
+    width: 145px;
+    height: 53px
+}
+
+.v-gender {
+    left: 20px;
+    top: 255px;
+    width: 625px;
+    height: 285px
+}
+
+.gender-tornado {
+    height: calc(100% - 26px);
+    overflow: hidden;
+    padding: 2px 7px 0
+}
+
+.tornado-header {
+    display: grid;
+    grid-template-columns: 1fr 52px 1fr;
+    height: 20px;
+    align-items: center;
+    font-size: 11px
+}
+
+.male-title {
+    text-align: right;
+    padding-right: 12px;
+    color: #4e79a7;
+    font-weight: 700
+}
+
+.female-title {
+    text-align: left;
+    padding-left: 12px;
+    color: #e15759;
+    font-weight: 700
+}
+
+.center-title {
+    visibility: hidden
+}
+
+.tornado-row {
+    display: grid;
+    grid-template-columns: 1fr 52px 1fr;
+    align-items: center;
+    height: 13px;
+    margin-bottom: 1px
+}
+
+.tornado-side {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    height: 100%
+}
+
+.male-side {
+    justify-content: flex-end
+}
+
+.female-side {
+    justify-content: flex-start
+}
+
+.tornado-bar {
+    height: 10px;
+    min-width: 2px
+}
+
+    .tornado-bar.male {
+        background: #4e79a7
+    }
+
+    .tornado-bar.female {
+        background: #e15759
+    }
+
+.tornado-value {
+    width: 58px;
+    font-size: 7px;
+    line-height: 1;
+    white-space: nowrap;
+    color: #4f6f9f
+}
+
+.male-side .tornado-value {
+    text-align: left;
+    margin-left: 4px
+}
+
+.female-side .tornado-value {
+    text-align: right;
+    margin-right: 4px;
+    color: #e15759
+}
+
+.tornado-year {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid #d9dee7;
+    border-right: 1px solid #d9dee7;
+    color: #252a33;
+    font-size: 8px;
+    font-weight: 600
+}
+
+.tornado-icons {
+    display: grid;
+    grid-template-columns: 1fr 52px 1fr;
+    align-items: center;
+    margin-top: 7px;
+    height: 36px
+}
+
+.gender-icon {
+    font-size: 29px;
+    line-height: 1;
+    font-family: "Segoe UI Symbol",Tahoma,sans-serif
+}
+
+    .gender-icon.male {
+        text-align: center;
+        color: #1f5ba8
+    }
+
+    .gender-icon.female {
+        text-align: center;
+        color: #e64f59
+    }
+
+.tornado-center-line {
+    width: 2px;
+    height: 31px;
+    background: #c7ccd5;
+    justify-self: center
+}
+
+.v-birth-death {
+    left: 665px;
+    top: 255px;
+    width: 595px;
+    height: 137px
+}
+
+.v-marriage-chart {
+    left: 665px;
+    top: 403px;
+    width: 595px;
+    height: 137px
+}
+
+.chart {
+    height: calc(100% - 22px);
+    width: 100%;
+    overflow: hidden
+}
+
+    .chart svg {
+        width: 100%;
+        height: 100%;
+        display: block
+    }
+
+.chart-axis-label {
+    font-size: 8px;
+    fill: #596273
+}
+
+.chart-grid {
+    stroke: #e7eaf0;
+    stroke-width: 1
+}
+
+.chart-line {
+    fill: none;
+    stroke-width: 2
+}
+
+.chart-dot {
+    stroke: #fff;
+    stroke-width: 1
+}
+
+.chart-legend {
+    display: flex;
+    direction: rtl;
+    justify-content: center;
+    gap: 20px;
+    font-size: 9px;
+    color: #596273;
+    margin-bottom: 2px
+}
+
+.legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px
+}
+
+.legend-dot {
+    width: 9px;
+    height: 3px;
+    border-radius: 3px
+}
+
+.placeholder-page {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: #7b8492
+}
+
+.top-card {
+    width: 145px;
+    height: 85px;
+}
+
+    .top-card .big-value {
+        font-size: 22px;
+    }
+
+/* =====================================================
+   EDUCATION PAGE
+   فقط کلاس‌های جدید - صفحه جمعیت دست‌نخورده
+   ===================================================== */
+
+.education-page {
+    background: #fff;
+}
+
+.edu-card,
+.edu-kpi {
+    position: absolute;
+    background: #fff;
+    border: 1px solid #e2e6ec;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(31,60,136,.05);
+}
+
+.edu-card {
+    width: 145px;
+    height: 85px;
+    text-align: center;
+    padding: 10px;
+}
+
+.edu-kpi {
+    width: 145px;
+    height: 53px;
+    text-align: center;
+    padding: 7px;
+}
+
+.edu-student {
+    left: 15px;
+    top: 10px;
+}
+
+.edu-student-kpi {
+    left: 15px;
+    top: 105px;
+}
+
+.edu-college {
+    left: 170px;
+    top: 10px;
+}
+
+.edu-college-kpi {
+    left: 170px;
+    top: 105px;
+}
+
+.edu-graduated {
+    left: 325px;
+    top: 10px;
+}
+
+.edu-graduated-kpi {
+    left: 325px;
+    top: 105px;
+}
+
+.edu-female {
+    left: 480px;
+    top: 10px;
+}
+
+.edu-trend {
+    left: 20px;
+    top: 180px;
+    width: 600px;
+    height: 205px;
+}
+
+.edu-student-gender {
+    left: 640px;
+    top: 180px;
+    width: 300px;
+    height: 205px;
+}
+
+.edu-college-gender {
+    left: 960px;
+    top: 180px;
+    width: 300px;
+    height: 205px;
+}
+
+.edu-majors {
+    left: 20px;
+    top: 400px;
+    width: 600px;
+    height: 220px;
+}
+
+.edu-insight {
+    left: 640px;
+    top: 400px;
+    width: 620px;
+    height: 220px;
+}
+
+.edu-tornado {
+    width: 100%;
+    height: calc(100% - 28px);
+    overflow: hidden;
+    padding: 4px;
+}
+
+.edu-insight-text {
+    line-height: 2;
+    font-size: 12px;
+    color: #4e5766;
+    padding: 12px 18px;
+}
+
+    .edu-insight-text div {
+        margin-bottom: 5px;
+    }
+
+.edu-major-row {
+    display: flex;
+    align-items: center;
+    height: 22px;
+    margin-bottom: 3px;
+}
+
+.edu-major-name {
+    width: 105px;
+    font-size: 9px;
+    text-align: right;
+    padding-left: 7px;
+}
+
+.edu-major-bar-wrap {
+    flex: 1;
+    height: 13px;
+    background: #eef1f5;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.edu-major-bar {
+    height: 100%;
+    background: #3f73bd;
+    border-radius: 3px;
+}
+
+.edu-major-value {
+    width: 65px;
+    font-size: 9px;
+    text-align: left;
+    padding-right: 5px;
+}
+/* =====================================================
+   LABOR PAGE
+===================================================== */
+
+
+.labor-card,
+.employment-panel,
+.labor-panel {
+    background: white;
+    border: 1px solid #e2e6ec;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+
+
+/* KPI */
+
+.labor-card {
+    width: 260px;
+    height: 100px;
+    text-align: center;
+}
+
+
+
+.labor-participation {
+    left: 20px;
+    top: 10px;
+}
+
+
+.labor-unemployment {
+    left: 290px;
+    top: 10px;
+}
+
+
+.labor-employment {
+    left: 560px;
+    top: 10px;
+}
+
+
+.labor-active {
+    left: 830px;
+    top: 10px;
+}
+
+
+
+
+/* panels */
+
+
+.labor-worker-chart {
+    position: absolute;
+    left: 20px;
+    top: 140px;
+    width: 600px;
+    height: 230px;
+}
+
+.labor-change-table {
+    position: absolute;
+    left: 650px;
+    top: 140px;
+    width: 610px;
+    height: 230px;
+}
+
+
+
+
+
+.labor-industry-chart {
+    position: absolute;
+    left: 20px;
+    top: 400px;
+    width: 600px;
+    height: 200px;
+}
+
+
+
+.labor-gender-chart {
+    position: absolute;
+    left: 650px;
+    top: 400px;
+    width: 610px;
+    height: 200px;
+}
+
+
+
+.labor-insight {
+    position: absolute;
+    left: 20px;
+    top: 620px;
+    width: 1240px;
+    min-height: 90px;
+}
+
+
+
+
+
+
+/* =====================================================
+   EMPLOYMENT PAGE
+===================================================== */
+
+
+
+.employment-panel {
+    position: absolute;
+}
+
+
+
+.employment-age {
+    left: 20px;
+    top: 20px;
+    width: 600px;
+    height: 300px;
+}
+
+
+
+.employment-region {
+    left: 650px;
+    top: 20px;
+    width: 610px;
+    height: 300px;
+}
+
+
+
+.employment-donut {
+    left: 20px;
+    top: 350px;
+    width: 600px;
+    height: 220px;
+}
+
+
+
+.employment-trend {
+    left: 650px;
+    top: 350px;
+    width: 610px;
+    height: 220px;
+}
+
+
+
+.employment-insight {
+    left: 20px;
+    top: 600px;
+    width: 1240px;
+    min-height: 100px;
+}
+
+
+
+
+.insight-text {
+    font-size: 13px;
+    line-height: 2;
+    color: #4e5766;
+    padding: 10px;
+}
+
+
+
+.tornado-chart {
+    height: 100%;
+    overflow: hidden;
+}
+.labor-simple-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+
+    .labor-simple-table th {
+        background: #f1f4f8;
+        padding: 6px;
+    }
+
+
+    .labor-simple-table td {
+        border-bottom: 1px solid #eee;
+        padding: 5px;
+        text-align: center;
+    }
+.labor-bar-chart {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    height: 170px;
+    padding: 10px;
+}
+
+
+
+.labor-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+
+
+.labor-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    height: 145px;
+}
+
+
+
+.labor-employed {
+    width: 18px;
+    background: #2b7a4b;
+    border-radius: 4px 4px 0 0;
+    position: relative;
+}
+
+
+
+.labor-unemployed {
+    width: 18px;
+    background: #e15759;
+    border-radius: 4px 4px 0 0;
+    position: relative;
+}
+
+
+
+.labor-bars span {
+    position: absolute;
+    top: -18px;
+    font-size: 9px;
+    white-space: nowrap;
+}
+
+
+
+.labor-year {
+    margin-top: 8px;
+    font-size: 10px;
+}
+.labor-tooltip {
+    position: fixed;
+    display: none;
+    background: #333;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    z-index: 9999;
+}
+.labor-bar-chart {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 15px;
+    width: 100%;
+    height: 170px;
+}
+
+
+.labor-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    width: 45px;
+    height: 170px;
+    flex-shrink: 0;
+}
+
+
+.labor-bars {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 4px;
+    height: 145px;
+}
+.labor-worker-chart .chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.labor-bar-chart {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center !important;
+    align-items: flex-end;
+    gap: 15px;
+    width: 100% !important;
+}
+.active-trend-line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 145px;
+    pointer-events: none;
+}
+.industry-stacked-chart {
+    width: 100%;
+    padding: 10px 15px;
+    box-sizing: border-box;
+}
+
+
+.industry-axis {
+    display: flex;
+    justify-content: space-between;
+    direction: ltr;
+    margin-left: 55px;
+    margin-bottom: 8px;
+    font-size: 11px;
+    color: #777;
+}
+
+
+.industry-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+
+.industry-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+
+.industry-year {
+    width: 45px;
+    min-width: 45px;
+    text-align: right;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+.industry-bar {
+    flex: 1;
+    height: 28px;
+    display: flex;
+    flex-direction: row;
+    direction: ltr;
+    overflow: hidden;
+    border-radius: 4px;
+    background: #eee;
+}
+
+
+.industry-segment {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+
+    .industry-segment.agriculture {
+        background: #2e8b57;
+    }
+
+
+    .industry-segment.industry {
+        background: #f28e2b;
+    }
+
+
+    .industry-segment.services {
+        background: #7f858b;
+    }
+
+
+.industry-legend {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    margin-top: 15px;
+    font-size: 12px;
+}
+
+
+.industry-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+
+.legend-box {
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    border-radius: 2px;
+}
+
+
+    .legend-box.agriculture {
+        background: #2e8b57;
+    }
+
+
+    .legend-box.industry {
+        background: #f28e2b;
+    }
+
+
+    .legend-box.services {
+        background: #7f858b;
+    }
+/* =========================
+   نمودار مشارکت زن و مرد
+   ========================= */
+
+.labor-gender-chart {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* خود نمودار lineChart */
+
+#laborGenderChart {
+    width: 100%;
+    height: 180px;
+    position: relative;
+}
+
+
+/* بخش تغییرات زیر نمودار */
+
+.gender-change {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    margin-top: 10px;
+    direction: rtl;
+}
+
+
+/* KPI تغییر مرد */
+
+.gender-kpi.male {
+    color: #1976d2;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* KPI تغییر زن */
+
+.gender-kpi.female {
+    color: #e15759;
+    font-size: 13px;
+    font-weight: 600;
+}
+.labor-change-table {
+    width: 100%;
+    border-collapse: collapse;
+    direction: rtl;
+    font-size: 13px;
+}
+
+
+    .labor-change-table th {
+        padding: 10px 8px;
+        background: #f3f4f6;
+        font-weight: 600;
+        text-align: center;
+    }
+
+
+    .labor-change-table td {
+        padding: 9px 8px;
+        border-bottom: 1px solid #e5e7eb;
+        text-align: center;
+    }
+
+
+    .labor-change-table .indicator-name {
+        text-align: right;
+        font-weight: 500;
+    }
+
+
+    .labor-change-table .change-value {
+        font-weight: 600;
+        direction: ltr;
+    }
+/* ================= VER8 FINAL VISUAL FIXES ================= */
+.labor-change-table{
+    width:100% !important;
+    max-width:100% !important;
+    table-layout:fixed !important;
+    direction:rtl;
+    font-size:10.5px;
+}
+.labor-change-table col.col-name{width:39%}
+.labor-change-table th,.labor-change-table td{padding:5px 4px !important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.labor-change-table .indicator-name{width:39%;text-align:right}
+.labor-change-table .change-value{direction:ltr}
+.labor-change-table th:nth-child(2),.labor-change-table th:nth-child(3),.labor-change-table td:nth-child(2),.labor-change-table td:nth-child(3){width:19%}
+.labor-change-table th:nth-child(4),.labor-change-table td:nth-child(4){width:23%}
+.labor-change-table-scroll,.labor-table-scroll{width:100%;max-width:100%;overflow:hidden}
+.labor-change-table td{line-height:1.25}
+
+#laborGenderChart{height:100% !important;min-height:0;overflow:hidden}
+#laborGenderChart .chart-legend{margin-top:0;margin-bottom:2px}
+#laborGenderChart svg{height:118px !important}
+.gender-change{margin-top:2px !important;gap:25px !important;flex-wrap:nowrap}
+.gender-kpi.male,.gender-kpi.female{font-size:10.5px !important;white-space:nowrap}
+
+.region-full-table{table-layout:fixed;width:100%;font-size:9px}
+.region-full-table th,.region-full-table td{padding:3px 2px !important;line-height:1.15}
+.region-full-table th:nth-child(1){width:15%}
+.region-full-table th:nth-child(2){width:28%}
+.region-full-table th:nth-child(3),.region-full-table th:nth-child(4){width:17%}
+.region-full-table th:nth-child(5){width:23%}
+.region-full-table .indicator-name{text-align:right;white-space:nowrap}
+.region-full-table .region-name{font-weight:700;text-align:center;vertical-align:middle}
+.region-detail-scroll{width:100%;overflow:hidden}
+.region-smart-insight{margin-top:4px;padding:4px 7px;border-top:1px solid #e6e9ee;color:#596273;font-size:9.5px;line-height:1.55}
+.region-smart-insight div+div{margin-top:2px}
+
+.two-donuts{height:100%;display:flex;direction:rtl;align-items:center;justify-content:space-evenly;gap:8px}
+.donut-box{width:48%;text-align:center}
+.donut-title{font-size:10px;font-weight:700;color:#586273;margin-bottom:3px}
+.donut-wrap.compact{gap:10px;height:155px}
+.donut-wrap.compact .donut{width:105px;height:105px;flex:0 0 105px}
+.donut-wrap.compact .donut-hole{inset:27px;font-size:9px}
+.donut-wrap.compact .donut-legend{font-size:9px;line-height:2;text-align:right}
+.legend-swatch{display:inline-block;width:8px;height:8px;border-radius:50%;margin-left:4px}
+.legend-swatch.city{background:#8fb3df}.legend-swatch.rural{background:#2b7a4b}
+
+.labor-insight{top:525px !important;height:95px !important;min-height:95px !important;overflow:hidden}
+.labor-industry-chart,.labor-gender-chart{top:350px !important;height:160px !important}
+.labor-worker-chart,.labor-change-table{top:125px !important;height:210px !important}
+.labor-bar-chart{height:155px !important;padding:6px 14px !important}
+.labor-bars{height:130px !important}
+
+.employment-age,.employment-region{top:15px !important;height:260px !important}
+.employment-donut,.employment-trend{top:290px !important;height:190px !important}
+.employment-insight{top:495px !important;height:125px !important;min-height:125px !important;overflow:hidden}
+.employment-insight .insight-text{padding:4px 8px}
+
+/* The dashboard canvas is deliberately kept within the viewport. */
+.labor-page,.employment-page{height:100%;overflow:hidden}
+
+
+/* =====================================================
+   VER8.1 PRECISION LAYOUT FIXES
+   ===================================================== */
+.labor-page {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.labor-worker-chart,
+.labor-change-panel,
+.labor-industry-chart,
+.labor-gender-chart,
+.labor-insight {
+    box-sizing: border-box;
+}
+
+/* Two-column labor layout: exact fit inside 1280px canvas */
+.labor-worker-chart {
+    left: 20px !important;
+    width: 590px !important;
+    top: 125px !important;
+    height: 210px !important;
+    overflow: hidden !important;
+}
+.labor-change-panel {
+    left: 630px !important;
+    width: 630px !important;
+    top: 125px !important;
+    height: 210px !important;
+    overflow: hidden !important;
+    padding: 9px 10px !important;
+}
+.labor-industry-chart {
+    left: 20px !important;
+    width: 590px !important;
+    top: 350px !important;
+    height: 160px !important;
+    overflow: hidden !important;
+}
+.labor-gender-chart {
+    left: 630px !important;
+    width: 630px !important;
+    top: 350px !important;
+    height: 160px !important;
+    overflow: hidden !important;
+}
+.labor-insight {
+    left: 20px !important;
+    width: 1240px !important;
+    top: 525px !important;
+    height: 100px !important;
+    min-height: 100px !important;
+    overflow: hidden !important;
+}
+
+/* The old outer-panel and inner-table shared the same class name.
+   The panel is now labor-change-panel; these rules target the table only. */
+.labor-change-panel #laborTable,
+.labor-change-panel .labor-table-scroll {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+}
+.labor-change-panel table.labor-change-table {
+    display: table !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+    direction: rtl;
+    font-size: 10.5px !important;
+}
+.labor-change-panel table.labor-change-table col.col-name { width: 40% !important; }
+.labor-change-panel table.labor-change-table th:nth-child(2),
+.labor-change-panel table.labor-change-table td:nth-child(2),
+.labor-change-panel table.labor-change-table th:nth-child(3),
+.labor-change-panel table.labor-change-table td:nth-child(3) { width: 18% !important; }
+.labor-change-panel table.labor-change-table th:nth-child(4),
+.labor-change-panel table.labor-change-table td:nth-child(4) { width: 24% !important; }
+.labor-change-panel table.labor-change-table th,
+.labor-change-panel table.labor-change-table td {
+    box-sizing: border-box !important;
+    padding: 5px 4px !important;
+    line-height: 1.15 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+.labor-change-panel .indicator-name { text-align: right !important; }
+.labor-change-panel .change-value { direction: ltr; }
+
+/* Gender participation: enough plot height, centered legend and KPIs */
+.labor-gender-chart .panel-title { margin-bottom: 3px !important; }
+#laborGenderChart {
+    width: 100% !important;
+    height: 142px !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+}
+#laborGenderChart svg {
+    width: 100% !important;
+    height: 112px !important;
+    display: block !important;
+}
+#laborGenderChart .chart-legend { margin: 0 0 2px !important; }
+#laborGenderChart .gender-change { margin-top: 1px !important; }
+.gender-kpi.male,.gender-kpi.female { font-size: 10px !important; white-space: nowrap !important; }
+
+/* Active trend overlay shares exactly the rendered bar stage. */
+.active-trend-stage {
+    position: relative !important;
+    width: 100% !important;
+    height: 175px !important;
+    padding: 5px 10px 0 !important;
+    display: block !important;
+    overflow: hidden !important;
+}
+.active-trend-stage .labor-bars-layer {
+    position: absolute !important;
+    left: 10px !important;
+    right: 10px !important;
+    top: 5px !important;
+    bottom: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-end !important;
+    justify-content: space-around !important;
+    gap: 0 !important;
+}
+.active-trend-stage .labor-column {
+    width: 42px !important;
+    min-width: 42px !important;
+    height: 170px !important;
+    flex: 0 0 42px !important;
+}
+.active-trend-stage .labor-bars {
+    height: 130px !important;
+}
+.active-trend-overlay {
+    position: absolute !important;
+    left: 10px !important;
+    right: 10px !important;
+    top: 5px !important;
+    width: calc(100% - 20px) !important;
+    height: 145px !important;
+    pointer-events: none !important;
+    z-index: 5 !important;
+    overflow: visible !important;
+}
+.active-trend-polyline { vector-effect: non-scaling-stroke; }
+
+/* Industry: vertical scrollbar when the number of years exceeds the panel height. */
+.industry-stacked-chart {
+    height: 100% !important;
+    overflow: hidden !important;
+    padding: 4px 8px !important;
+}
+.industry-stacked-chart .industry-axis { margin-bottom: 3px !important; }
+.industry-stacked-chart .industry-rows {
+    max-height: 93px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding-left: 4px !important;
+    scrollbar-width: auto;
+}
+.industry-stacked-chart .industry-row { min-height: 24px !important; }
+.industry-stacked-chart .industry-bar { height: 22px !important; }
+.industry-stacked-chart .industry-legend { margin-top: 4px !important; }
+
+/* Make the scrollbar visibly available without pushing content outside the panel. */
+.industry-stacked-chart .industry-rows::-webkit-scrollbar { width: 9px; }
+.industry-stacked-chart .industry-rows::-webkit-scrollbar-track { background: #edf0f4; border-radius: 6px; }
+.industry-stacked-chart .industry-rows::-webkit-scrollbar-thumb { background: #aeb6c2; border-radius: 6px; }
+
+/* Keep bottom insight panels completely inside the canvas. */
+.employment-page { width: 100%; height: 100%; overflow: hidden !important; }
+.employment-insight {
+    left: 20px !important;
+    width: 1240px !important;
+    top: 495px !important;
+    height: 125px !important;
+    min-height: 125px !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+
+
+/* VER8.2: remove legacy panel positioning from the inner labor table */
+.labor-change-panel table.labor-change-table {
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    float: none !important;
+    margin: 0 !important;
+    transform: none !important;
+}
+
+/* Gender chart is a panel, not a normal-flow child. */
+.labor-gender-chart {
+    position: absolute !important;
+    left: 630px !important;
+    top: 350px !important;
+    width: 630px !important;
+    height: 160px !important;
+}
+
+/* Keep the inner chart from inheriting panel dimensions. */
+.labor-gender-chart #laborGenderChart {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+}
+
+/* VER8.3: inner table must not inherit the panel's fixed height */
+.labor-change-panel table.labor-change-table {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+.labor-change-panel #laborTable {
+    height: auto !important;
+    max-height: 164px !important;
+}
+
+
+/* VER8.4: keep gender trend and its two change KPIs fully inside the panel */
+.labor-gender-chart #laborGenderChart {
+    height: 136px !important;
+}
+.labor-gender-chart #laborGenderChart svg {
+    height: 96px !important;
+}
+.labor-gender-chart #laborGenderChart .gender-change {
+    margin-top: 0 !important;
+    line-height: 16px !important;
+}
+
+/* VER8.5 - Persian numeric presentation */
+html,body,.app,.header,.canvas,.page,.visual,.panel,
+button,select,input,table,th,td,span,div,p,label {
+    font-family:"Vazirmatn","IRANSans","B Nazanin","Tahoma","Segoe UI",sans-serif;
+    font-variant-numeric: normal;
+}
+
+/* VER8.5 - mirrored age unemployment tornado */
+.age-tornado-wrap{height:100%;display:flex;flex-direction:column;gap:3px;overflow:hidden}
+.age-tornado-head,.age-tornado-row{display:grid;grid-template-columns:1fr 48px 1fr;align-items:center}
+.age-tornado-head{font-size:10px;color:#6c7584;margin-bottom:2px}
+.age-head{text-align:center;font-weight:700}.female-head{color:#c95b88}.male-head{color:#3f73bd}
+.age-tornado-rows{display:flex;flex-direction:column;gap:4px;overflow:auto;scrollbar-width:thin;padding:0 2px}
+.age-tornado-row{min-height:27px}
+.age-stack{height:22px;display:flex;align-items:stretch;overflow:hidden;background:#f0f2f6;border-radius:4px}
+.female-stack{justify-content:flex-start;direction:rtl}.male-stack{justify-content:flex-start;direction:ltr}
+.age-stack-segment{height:100%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:8px;font-weight:700;min-width:2px;cursor:crosshair;transition:filter .12s}
+.age-stack-segment:hover{filter:brightness(.88)}
+.age15-f{background:#f5b6cf}.age24-f{background:#df78a8}.age35-f{background:#7d4b9d}
+.age15-m{background:#a9c8ea}.age24-m{background:#5f8fc8}.age35-m{background:#173b70}
+.age-year{text-align:center;font-size:10px;font-weight:700;color:#586273}
+.age-tornado-legend{display:flex;justify-content:center;gap:16px;font-size:8.5px;color:#657080;direction:rtl;margin-top:2px}
+.age-tornado-legend span{display:flex;align-items:center;gap:3px}.age-tornado-legend i{display:inline-block;width:9px;height:7px;border-radius:2px}.age-tornado-legend .age15-f{background:#f5b6cf}.age-tornado-legend .age24-f{background:#df78a8}.age-tornado-legend .age35-f{background:#7d4b9d}
+
+/* VER8.5 - employment donuts are average of selected period */
+#regionDonutChart{height:100%;overflow:hidden}
+.two-donuts{height:100%;display:flex;direction:rtl;align-items:center;justify-content:space-around;gap:8px}
+.donut-box{width:48%;min-width:0;text-align:center}.donut-title{font-size:9px;font-weight:700;color:#586273;white-space:nowrap}
+
+/* Ensure all SVG axis labels use the same Persian-capable stack */
+.chart svg text{font-family:"Vazirmatn","IRANSans","Tahoma",sans-serif}
+
+/* =========================================================
+   VER5 FINAL — requested layout / matrix / logo
+   ========================================================= */
+
+/* Header logo */
+.header{position:relative}
+.header-logo{
+    order:3;
+    width:44px;
+    height:44px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex:0 0 44px;
+    margin-left:4px;
+}
+.header-logo img{
+    width:40px;
+    height:40px;
+    object-fit:contain;
+    display:block;
+}
+
+/* Population page credit */
+.dashboard-credit{
+    position:absolute;
+    left:20px;
+    bottom:5px;
+    font-size:10px;
+    color:#687383;
+    white-space:nowrap;
+    direction:rtl;
+}
+
+/* Employment page: move the complete visual stack down while keeping
+   exactly 5px from the insight panel to the bottom of the canvas. */
+.employment-age,.employment-region{
+    top:35px !important;
+}
+.employment-donut,.employment-trend{
+    top:310px !important;
+}
+.employment-insight{
+    top:515px !important;
+    height:125px !important;
+    min-height:125px !important;
+    bottom:auto !important;
+    overflow:hidden;
+}
+
+/* Region matrix */
+.region-detail-scroll{display:none !important}
+.region-matrix-wrap{
+    width:100%;
+    max-width:100%;
+    overflow:hidden;
+    direction:rtl;
+}
+.region-matrix{
+    width:100%;
+    max-width:100%;
+    border-collapse:collapse;
+    table-layout:fixed;
+    font-size:9px;
+    direction:rtl;
+}
+.region-matrix th,.region-matrix td{
+    padding:4px 3px !important;
+    border-bottom:1px solid #e3e7ed;
+    text-align:center;
+    vertical-align:middle;
+    line-height:1.2;
+    overflow:hidden;
+    white-space:nowrap;
+}
+.region-matrix thead th{
+    background:#f1f4f8;
+    font-weight:700;
+    color:#485261;
+}
+.region-matrix .matrix-indicator{
+    width:22%;
+    text-align:right;
+    font-weight:700;
+}
+.region-matrix th:not(.matrix-indicator),
+.region-matrix td:not(.matrix-indicator){
+    width:13%;
+}
+.region-matrix .matrix-city{
+    background:#eaf2fb;
+    color:#315d91;
+}
+.region-matrix .matrix-rural{
+    background:#edf6ef;
+    color:#367047;
+}
+.region-matrix .matrix-change{
+    direction:ltr;
+    font-weight:700;
+}
+.region-matrix tbody tr:nth-child(even) td{
+    background:#fafbfc;
+}
+.region-matrix tbody tr:nth-child(even) .matrix-indicator{
+    background:#f5f6f8;
+}
+
+
+/* ==========================================================
+   VER5 FINAL — precise layout overrides
+   ========================================================== */
+
+/* Persian/Arabic capable font stack and numeric shaping. */
+html, body, button, input, select, textarea, table {
+    font-family: "Vazirmatn", "Vazir", Tahoma, "Segoe UI", sans-serif;
+    font-variant-numeric: normal;
+}
+
+/* ---------- Header logo ---------- */
+.header {
+    position: relative;
+}
+.header-logo {
+    order: 99 !important;
+    margin-right: 0 !important;
+    margin-left: 4px !important;
+    width: 52px !important;
+    height: 52px !important;
+    flex: 0 0 52px !important;
+}
+.header-logo img {
+    width: 50px !important;
+    height: 50px !important;
+    object-fit: contain !important;
+}
+
+/* ---------- First page credit ---------- */
+.dashboard-credit {
+    left: 20px !important;
+    right: auto !important;
+    bottom: 5px !important;
+    font-size: 11px !important;
+    line-height: 18px !important;
+    z-index: 20;
+}
+
+/* ---------- Employment page: reserve exactly 5px bottom gap ----------
+   Canvas minimum height is 646px.  The insight panel is 120px high,
+   so bottom:5px gives a deterministic top at 521px. */
+.employment-page {
+    position: absolute !important;
+    inset: 0 !important;
+    height: 100% !important;
+    overflow: hidden !important;
+}
+.employment-insight {
+    left: 20px !important;
+    right: 20px !important;
+    width: auto !important;
+    top: auto !important;
+    bottom: 5px !important;
+    height: 120px !important;
+    min-height: 120px !important;
+    max-height: 120px !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+.employment-insight .insight-text {
+    max-height: 82px !important;
+    overflow: hidden !important;
+    padding: 6px 10px !important;
+}
+
+/* Move the two requested upper panels down by the same 26px
+   used to create the lower insight space. */
+.employment-region {
+    top: 41px !important;
+}
+.employment-trend {
+    top: 316px !important;
+}
+
+/* Keep the age panel and donut panel visually balanced. */
+.employment-age {
+    top: 15px !important;
+}
+.employment-donut {
+    top: 316px !important;
+}
+
+/* ---------- Urban/rural matrix ---------- */
+.region-matrix-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+}
+.region-matrix {
+    width: 100% !important;
+    max-width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+    font-size: 9px !important;
+}
+.region-matrix th,
+.region-matrix td {
+    padding: 3px 2px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+.region-matrix .matrix-indicator {
+    width: 20% !important;
+}
+.region-matrix th:not(.matrix-indicator),
+.region-matrix td:not(.matrix-indicator) {
+    width: 13.333% !important;
+}
+
+/* ---------- Donut charts: centered circular ---------- */
+.regionDonutChart,
+#regionDonutChart {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+}
+.two-donuts {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 26px !important;
+    direction: rtl !important;
+}
+.donut-box {
+    width: 46% !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+.donut-wrap.compact {
+    width: 100% !important;
+    height: 145px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+}
+.donut-wrap.compact .donut {
+    width: 112px !important;
+    height: 112px !important;
+    min-width: 112px !important;
+    min-height: 112px !important;
+    aspect-ratio: 1 / 1 !important;
+    border-radius: 50% !important;
+}
+.donut-wrap.compact .donut-hole {
+    inset: 29px !important;
+    border-radius: 50% !important;
+}
+
+/* ---------- General visual containment ---------- */
+.employment-panel,
+.employment-insight {
+    box-sizing: border-box !important;
+}
+
+
+/* ==========================================================
+   FINAL — LOGO + CREDIT ON ALL DASHBOARD PAGES
+   ========================================================== */
+
+.header-logo img {
+    width: 50px !important;
+    height: 50px !important;
+    object-fit: contain !important;
+    display: block !important;
+}
+
+.dashboard-credit {
+    position: absolute !important;
+    left: 20px !important;
+    right: auto !important;
+    bottom: 5px !important;
+    z-index: 100 !important;
+    font-family: "Vazirmatn","Vazir",Tahoma,"Segoe UI",sans-serif !important;
+    font-size: 11px !important;
+    line-height: 18px !important;
+    color: #687383 !important;
+    white-space: nowrap !important;
+    direction: rtl !important;
+}
+
+/* Every page is the containing block for its own footer credit. */
+.page {
+    position: absolute !important;
+    inset: 0 !important;
+}
+
+/* Preserve the employment insight's requested 5px bottom clearance. */
+.employment-insight {
+    bottom: 5px !important;
+}
+
+
+/* ==========================================================
+   FINAL NARRATIVE LAYOUT — POPULATION + EDUCATION
+   ========================================================== */
+
+/* The population charts end at 540px; reserve the lower band for narrative. */
+.population-insight {
+    left: 20px !important;
+    top: 550px !important;
+    width: 1240px !important;
+    height: 75px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+}
+.population-insight .insight-text,
+.population-insight .panel-title {
+    box-sizing: border-box !important;
+}
+.population-insight .insight-text {
+    height: 50px !important;
+    overflow: hidden !important;
+    padding: 3px 9px !important;
+    font-size: 10px !important;
+    line-height: 1.65 !important;
+}
+
+/* Education: keep majors readable, then put the narrative across the bottom. */
+.edu-majors {
+    top: 400px !important;
+    height: 125px !important;
+    overflow: hidden !important;
+}
+.edu-insight {
+    left: 20px !important;
+    top: 535px !important;
+    width: 1240px !important;
+    height: 90px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+}
+.edu-insight .edu-insight-text {
+    height: 58px !important;
+    overflow: hidden !important;
+    padding: 3px 9px !important;
+    font-size: 10px !important;
+    line-height: 1.65 !important;
+}
+.edu-insight .insight-line {
+    display: inline;
+}
+.edu-insight .insight-line::after {
+    content: "   ";
+}
+
+
+/* FINAL NARRATIVE READABILITY */
+.population-insight {
+    top: 548px !important;
+    height: 78px !important;
+}
+.population-insight .insight-text {
+    height: 53px !important;
+    font-size: 9.5px !important;
+    line-height: 1.55 !important;
+}
+.edu-insight {
+    top: 532px !important;
+    height: 93px !important;
+}
+.edu-insight .edu-insight-text {
+    height: 61px !important;
+    font-size: 9.5px !important;
+    line-height: 1.55 !important;
+}
+
+
+/* FINAL DELIVERY 2026-09-01 */
+.header-logo { 
+    position: relative !important;
+    z-index: 9999 !important;
+}
+.header-logo img#dashboardLogo {
+    width: 58px !important;
+    height: 58px !important;
+    max-width: 58px !important;
+    max-height: 58px !important;
+    object-fit: contain !important;
+    display: block !important;
+}
+.population-insight,
+.edu-insight {
+    z-index: 50 !important;
+    background: #fff !important;
+}
+.population-insight .panel-title,
+.edu-insight .panel-title {
+    display: block !important;
+}
+.population-insight .insight-text,
+.edu-insight .edu-insight-text {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #4e5766 !important;
+}
+
+
+/* ==========================================================
+   POPULATION NARRATIVE — FINAL LAYOUT
+   Same dimensions as Labor Insight, positioned below all
+   population charts without overlap.
+   ========================================================== */
+.population-insight {
+    left: 20px !important;
+    right: 20px !important;
+    width: auto !important;
+    top: 540px !important;
+    height: 100px !important;
+    min-height: 100px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    z-index: 50 !important;
+    padding: 10px !important;
+}
+
+.population-insight .panel-title {
+    height: 20px !important;
+    line-height: 20px !important;
+    margin: 0 0 4px 0 !important;
+    display: block !important;
+}
+
+.population-insight .insight-text {
+    display: block !important;
+    height: 57px !important;
+    max-height: 57px !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    padding: 0 8px !important;
+    color: #4e5766 !important;
+    font-size: 9.5px !important;
+    line-height: 1.65 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+
+/* ==========================================================
+   FINAL POPULATION NARRATIVE GEOMETRY
+   Gender panel ends at y=540.
+   Credit is at the bottom of the 646px canvas.
+   Narrative fills the gap between them and matches Labor width.
+   ========================================================== */
+.population-insight {
+    position: absolute !important;
+    left: 20px !important;
+    right: auto !important;
+    width: 1240px !important;
+    top: 545px !important;
+    height: 73px !important;
+    min-height: 73px !important;
+    max-height: 73px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    z-index: 40 !important;
+    padding: 7px 10px 5px 10px !important;
+}
+
+.population-insight .panel-title {
+    display: block !important;
+    height: 18px !important;
+    line-height: 18px !important;
+    margin: 0 0 3px 0 !important;
+    padding: 0 !important;
+}
+
+.population-insight .insight-text {
+    display: block !important;
+    height: 40px !important;
+    max-height: 40px !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    padding: 0 7px !important;
+    margin: 0 !important;
+    font-size: 9px !important;
+    line-height: 1.55 !important;
+    color: #4e5766 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+
+/* FINAL OVERRIDE — population narrative must be BELOW the gender panel */
+#population > div.population-insight.visual.panel {
+    position: absolute !important;
+    display: block !important;
+    left: 20px !important;
+    top: 545px !important;
+    width: 1240px !important;
+    height: 73px !important;
+    min-height: 73px !important;
+    max-height: 73px !important;
+    right: auto !important;
+    bottom: auto !important;
+    margin: 0 !important;
+    transform: none !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    z-index: 60 !important;
+}
+
+#population > div.population-insight.visual.panel > .panel-title {
+    display: block !important;
+    height: 18px !important;
+    margin: 0 0 3px 0 !important;
+    padding: 0 !important;
+}
+
+#population > div.population-insight.visual.panel > #populationInsight {
+    display: block !important;
+    height: 40px !important;
+    max-height: 40px !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 7px !important;
+    box-sizing: border-box !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
