@@ -2121,3 +2121,484 @@ html, body, button, input, select, textarea, table {
     visibility: visible !important;
     opacity: 1 !important;
 }
+
+
+/* ================= MOBILE RESPONSIVE FINAL ================= */
+@media (max-width: 768px) {
+  html,body { width:100%; min-width:0; margin:0; padding:0; overflow-x:hidden; }
+  .app { width:100%; min-width:0; }
+  .header { position:relative!important; width:100%!important; height:auto!important; min-height:105px!important; padding:8px 10px!important; box-sizing:border-box!important; }
+  .header-logo { position:absolute!important; right:10px!important; top:8px!important; z-index:9999!important; }
+  .header-logo img#dashboardLogo { width:44px!important; height:44px!important; max-width:44px!important; max-height:44px!important; object-fit:contain!important; }
+  .nav { width:calc(100% - 52px)!important; display:flex!important; flex-wrap:wrap!important; gap:5px!important; margin:0!important; }
+  .nav-btn { flex:1 1 70px!important; min-width:70px!important; height:34px!important; font-size:11px!important; padding:4px 6px!important; }
+  .top-slicers { width:100%!important; display:grid!important; grid-template-columns:1fr!important; gap:6px!important; margin-top:7px!important; }
+  .slicer,.year-range-slicer { width:100%!important; min-width:0!important; }
+  .slicer select { width:100%!important; box-sizing:border-box!important; }
+
+  .canvas { position:relative!important; width:100%!important; height:auto!important; min-height:0!important; margin:0!important; padding:10px!important; box-sizing:border-box!important; overflow:visible!important; }
+  .page { position:relative!important; inset:auto!important; width:100%!important; height:auto!important; min-height:0!important; display:none!important; box-sizing:border-box!important; }
+  .page.active { display:block!important; }
+
+  .page > .visual,
+  .page > .panel,
+  .page > div {
+    position:relative!important; left:auto!important; right:auto!important; top:auto!important; bottom:auto!important;
+    width:100%!important; max-width:100%!important; height:auto!important; min-height:0!important; max-height:none!important;
+    margin:0 0 10px 0!important; transform:none!important; box-sizing:border-box!important;
+  }
+
+  #population.page,#education.page,#labor.page {
+    display:grid!important; grid-template-columns:repeat(2,minmax(0,1fr))!important; gap:8px!important;
+  }
+  #population.page > .panel,#population.page > .population-insight,#population.page > .dashboard-credit,
+  #education.page > .panel,#labor.page > .labor-panel { grid-column:1/-1!important; }
+
+  #population.page > .panel { min-height:240px!important; }
+  #population.page > .v-gender { min-height:310px!important; }
+  #population.page > .v-birth-death,#population.page > .v-marriage-chart { min-height:250px!important; }
+
+  #population.page > .population-insight {
+    min-height:150px!important; height:auto!important; max-height:none!important; padding:9px!important;
+  }
+  #population.page > .population-insight .insight-text {
+    height:auto!important; max-height:none!important; overflow:visible!important; font-size:10px!important; line-height:1.8!important;
+  }
+  #population.page > .dashboard-credit {
+    position:relative!important; left:auto!important; right:auto!important; bottom:auto!important;
+    width:100%!important; margin:0!important; text-align:center!important; white-space:normal!important;
+  }
+
+  #education.page > .panel,#labor.page > .labor-panel { min-height:250px!important; }
+  #education.page > .edu-insight,#labor.page > .labor-insight {
+    min-height:150px!important; height:auto!important; max-height:none!important;
+  }
+  #education.page > .edu-insight .edu-insight-text,
+  #labor.page > .labor-insight .insight-text {
+    height:auto!important; max-height:none!important; overflow:visible!important; font-size:10px!important; line-height:1.8!important;
+  }
+
+  #employment.page { display:block!important; }
+  #employment.page > .employment-panel { width:100%!important; min-height:250px!important; }
+
+  .chart,.gender-tornado,.edu-tornado,.tornado-chart {
+    width:100%!important; max-width:100%!important; box-sizing:border-box!important; overflow-x:auto!important; overflow-y:hidden!important;
+  }
+  #laborTable,#regionEmploymentTable { width:100%!important; max-width:100%!important; overflow-x:auto!important; -webkit-overflow-scrolling:touch; }
+  #laborTable table,#regionEmploymentTable table { min-width:520px; }
+  .labor-bar-chart { width:100%!important; max-width:100%!important; overflow-x:auto!important; justify-content:flex-start!important; }
+  .labor-tooltip { max-width:calc(100vw - 20px)!important; box-sizing:border-box!important; }
+}
+
+@media (max-width: 430px) {
+  .header { min-height:112px!important; }
+  .nav { width:100%!important; padding-right:50px!important; box-sizing:border-box!important; }
+  .nav-btn { min-width:0!important; flex:1 1 48%!important; font-size:10px!important; }
+  #population.page,#education.page,#labor.page { grid-template-columns:1fr!important; }
+  #population.page > .visual,#education.page > .edu-card,#education.page > .edu-kpi,#labor.page > .labor-card { grid-column:1/-1!important; }
+  #population.page > .panel,#education.page > .panel,#labor.page > .labor-panel { min-height:235px!important; }
+}
+
+/* ==========================================================
+   RESPONSIVE REWORK — MOBILE-FIRST FLOW OVERRIDE
+   Keep desktop Power BI geometry intact. On phones, remove
+   all absolute desktop coordinates and let every visual flow
+   vertically inside the viewport. This prevents clipping and
+   preserves complete data by allowing page scrolling.
+   ========================================================== */
+@media screen and (max-width: 768px) {
+  html, body {
+    width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  body { background: #f5f7fb !important; }
+  .app { width: 100% !important; height: auto !important; min-width: 0 !important; }
+
+  /* Header becomes normal flow; no horizontal overflow. */
+  .header {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 8px 10px 10px !important;
+    display: block !important;
+    box-sizing: border-box !important;
+  }
+
+  .header-logo {
+    position: absolute !important;
+    top: 8px !important;
+    right: 10px !important;
+    width: 42px !important;
+    height: 42px !important;
+    margin: 0 !important;
+  }
+  .header-logo img#dashboardLogo {
+    display: block !important;
+    width: 42px !important;
+    height: 42px !important;
+    max-width: 42px !important;
+    max-height: 42px !important;
+    object-fit: contain !important;
+  }
+
+  .nav {
+    width: calc(100% - 50px) !important;
+    height: auto !important;
+    min-height: 42px !important;
+    margin: 0 0 7px 0 !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 4px !important;
+    align-items: stretch !important;
+  }
+  .nav-btn {
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 42px !important;
+    padding: 3px 2px !important;
+    font-size: 11px !important;
+    line-height: 1.25 !important;
+    white-space: normal !important;
+    border-bottom-width: 2px !important;
+  }
+
+  .top-slicers {
+    width: 100% !important;
+    margin: 0 !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 7px !important;
+    align-items: stretch !important;
+  }
+  .slicer,
+  .year-range-slicer {
+    width: 100% !important;
+    min-width: 0 !important;
+    display: grid !important;
+    grid-template-columns: 74px minmax(0, 1fr) !important;
+    gap: 6px !important;
+    align-items: center !important;
+    font-size: 11px !important;
+  }
+  .slicer label { white-space: nowrap !important; }
+  .slicer select {
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 34px !important;
+  }
+  .year-range-slicer .range-container {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+  .range-slider { width: 100% !important; }
+
+  /* Canvas and pages use document flow on mobile. */
+  .canvas {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 10px !important;
+    overflow: visible !important;
+    box-sizing: border-box !important;
+  }
+  .page,
+  .page.active {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Every visual loses desktop absolute coordinates. */
+  .page > .visual,
+  .page > .card-v,
+  .page > .kpi-v,
+  .page > .edu-card,
+  .page > .edu-kpi,
+  .page > .labor-card,
+  .page > .labor-panel,
+  .page > .employment-panel,
+  .page > .dashboard-credit {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Population: KPI cards in 2 columns, analytical visuals full width. */
+  #population.page {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+  #population.page > .card-v,
+  #population.page > .kpi-v {
+    grid-column: span 1 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: 78px !important;
+    min-height: 78px !important;
+  }
+  #population.page > .kpi-v { height: 58px !important; min-height: 58px !important; }
+  #population.page > .panel,
+  #population.page > .population-insight,
+  #population.page > .dashboard-credit {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+  }
+  #population.page > .v-gender { height: 320px !important; min-height: 320px !important; }
+  #population.page > .v-birth-death,
+  #population.page > .v-marriage-chart { height: 220px !important; min-height: 220px !important; }
+  #population.page > .population-insight {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    padding: 9px !important;
+    overflow: visible !important;
+  }
+  #population.page > .population-insight .insight-text {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    font-size: 10px !important;
+    line-height: 1.8 !important;
+    white-space: normal !important;
+  }
+
+  /* Education: KPI area in 2 columns, charts full width. */
+  #education.page {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+  #education.page > .edu-card,
+  #education.page > .edu-kpi {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: 78px !important;
+    min-height: 78px !important;
+    grid-column: span 1 !important;
+  }
+  #education.page > .edu-female { grid-column: 1 / -1 !important; }
+  #education.page > .panel,
+  #education.page > .edu-insight,
+  #education.page > .dashboard-credit {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+  }
+  #education.page > .edu-trend { height: 260px !important; min-height: 260px !important; }
+  #education.page > .edu-student-gender,
+  #education.page > .edu-college-gender { height: 300px !important; min-height: 300px !important; }
+  #education.page > .edu-majors { height: 250px !important; min-height: 250px !important; }
+  #education.page > .edu-insight {
+    height: auto !important; min-height: 0 !important; max-height: none !important;
+    overflow: visible !important;
+  }
+  #education.page > .edu-insight .edu-insight-text {
+    height: auto !important; max-height: none !important; overflow: visible !important;
+    font-size: 10px !important; line-height: 1.8 !important;
+  }
+
+  /* Labor: KPI cards in 2 columns, panels full width. */
+  #labor.page {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    overflow: visible !important;
+  }
+  #labor.page > .labor-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: 82px !important;
+    min-height: 82px !important;
+    grid-column: span 1 !important;
+  }
+  #labor.page > .labor-panel,
+  #labor.page > .labor-insight,
+  #labor.page > .dashboard-credit {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    position: relative !important;
+  }
+  #labor.page > .labor-worker-chart,
+  #labor.page > .labor-change-panel { height: 280px !important; min-height: 280px !important; }
+  #labor.page > .labor-industry-chart,
+  #labor.page > .labor-gender-chart { height: 240px !important; min-height: 240px !important; }
+  #labor.page > .labor-insight {
+    height: auto !important; min-height: 0 !important; max-height: none !important;
+    overflow: visible !important;
+  }
+  #labor.page > .labor-insight .insight-text {
+    height: auto !important; max-height: none !important; overflow: visible !important;
+    font-size: 10px !important; line-height: 1.8 !important;
+  }
+
+  /* Employment: all analytical panels stack vertically. */
+  #employment.page {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    overflow: visible !important;
+  }
+  #employment.page > .employment-panel,
+  #employment.page > .employment-insight,
+  #employment.page > .dashboard-credit {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    position: relative !important;
+    left: auto !important; right: auto !important; top: auto !important; bottom: auto !important;
+    margin: 0 !important;
+  }
+  #employment.page > .employment-age,
+  #employment.page > .employment-region { height: 310px !important; min-height: 310px !important; }
+  #employment.page > .employment-donut,
+  #employment.page > .employment-trend { height: 240px !important; min-height: 240px !important; }
+  #employment.page > .employment-insight {
+    height: auto !important; min-height: 0 !important; max-height: none !important;
+    overflow: visible !important;
+  }
+  #employment.page > .employment-insight .insight-text {
+    height: auto !important; max-height: none !important; overflow: visible !important;
+    font-size: 10px !important; line-height: 1.8 !important;
+  }
+
+  /* SVGs and chart containers must never exceed their panel width. */
+  .chart,
+  .gender-tornado,
+  .edu-tornado,
+  .tornado-chart,
+  .labor-bar-chart,
+  #birthDeathChart,
+  #marriageChart,
+  #educationTrend,
+  #majorChart,
+  #workerChart,
+  #industryChart,
+  #laborGenderChart,
+  #ageGenderChart,
+  #employmentTrendChart,
+  #regionDonutChart {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .chart svg { width: 100% !important; max-width: 100% !important; }
+
+  /* Tables remain complete via controlled horizontal scrolling, not clipping. */
+  #laborTable,
+  #regionEmploymentTable {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  #laborTable table,
+  #regionEmploymentTable table {
+    width: 100% !important;
+    min-width: 520px !important;
+  }
+
+  .labor-tooltip {
+    max-width: calc(100vw - 20px) !important;
+    box-sizing: border-box !important;
+  }
+  .dashboard-credit {
+    text-align: center !important;
+    white-space: normal !important;
+    height: auto !important;
+    min-height: 28px !important;
+    padding: 6px 4px !important;
+    font-size: 9px !important;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .canvas { padding: 8px !important; }
+  .header { padding-left: 8px !important; padding-right: 8px !important; }
+  .header-logo, .header-logo img#dashboardLogo { width: 38px !important; height: 38px !important; max-width: 38px !important; max-height: 38px !important; }
+  .nav { width: calc(100% - 44px) !important; grid-template-columns: repeat(4, minmax(0, 1fr)) !important; gap: 3px !important; }
+  .nav-btn { height: 40px !important; font-size: 10px !important; padding: 2px 1px !important; }
+  .slicer, .year-range-slicer { grid-template-columns: 68px minmax(0, 1fr) !important; font-size: 10px !important; }
+  #population.page > .card-v { height: 76px !important; min-height: 76px !important; }
+  #population.page > .kpi-v { height: 56px !important; min-height: 56px !important; }
+  #population.page > .v-gender { height: 300px !important; min-height: 300px !important; }
+  #population.page > .v-birth-death,
+  #population.page > .v-marriage-chart { height: 210px !important; min-height: 210px !important; }
+  #education.page > .edu-card,
+  #education.page > .edu-kpi { height: 76px !important; min-height: 76px !important; }
+  #labor.page > .labor-card { height: 80px !important; min-height: 80px !important; }
+}
+
+/* High-specificity correction for the legacy population narrative rule. */
+@media screen and (max-width: 768px) {
+  #population.page > div.population-insight.visual.panel {
+    position: relative !important;
+    display: block !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    transform: none !important;
+    overflow: visible !important;
+    box-sizing: border-box !important;
+    grid-column: 1 / -1 !important;
+  }
+  #population.page > div.population-insight.visual.panel > #populationInsight {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+}
+
+/* Only the selected report page is rendered on mobile. The earlier responsive
+   rules intentionally style each page, but must not make hidden pages visible. */
+@media screen and (max-width: 768px) {
+  .canvas > .page:not(.active) { display: none !important; }
+  .canvas > #population.page.active { display: grid !important; }
+  .canvas > #education.page.active { display: grid !important; }
+  .canvas > #labor.page.active { display: grid !important; }
+  .canvas > #employment.page.active { display: flex !important; }
+}
+
+/* ID-level specificity is required because page layout rules also use IDs. */
+@media screen and (max-width: 768px) {
+  #population.page:not(.active),
+  #education.page:not(.active),
+  #labor.page:not(.active),
+  #employment.page:not(.active) {
+    display: none !important;
+  }
+}
